@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { HeaderComponent } from './header/header.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
