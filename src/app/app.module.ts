@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { ViewComponent } from './view/view.component';
+import { WorkoutTemplateComponent } from './workout-template/workout-template.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ViewComponent } from './view/view.component';
     FooterComponent,
     WorkoutFormComponent,
     CreateWorkoutComponent,
-    ViewComponent
+    ViewComponent,
+    WorkoutTemplateComponent
   ],
   imports: [
     BrowserModule
