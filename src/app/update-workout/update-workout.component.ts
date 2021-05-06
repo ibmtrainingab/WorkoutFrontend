@@ -11,9 +11,10 @@ export class UpdateWorkoutComponent implements OnInit {
   workout:Workout= new Workout();
   parent:any={button:"Update"};
   workoutAny:any;
-  constructor(private workoutService: WorkoutService) { }
+  constructor(private workoutService: WorkoutService) { 
+  }
 
-  editBug(id: string) {
+  editWorkout(id: string) {
     this.getFieldData(id);
     document.getElementById('showBugTable').style.display = 'none';
     document.getElementById('showEditBug').style.display = 'block';

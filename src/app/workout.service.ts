@@ -20,6 +20,10 @@ export class WorkoutService {
   validateWorkout(workoutTemp: Workout) {
     return 1;
   }
+  getWorkouts(id: string) {
+    return this.http.get(this.URL + '');
+  }
+
   getCategories() {
     return this.http.get(this.URL + 'category');
   }
