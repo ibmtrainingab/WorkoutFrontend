@@ -13,8 +13,8 @@ export class WorkoutService {
   putWorkout(workout: Workout) {
     return this.http.put(this.URL + workout.id, workout, { headers: { "content-type": 'application/json' } });
   }
-  getActiveWorkout(id: string) {
-    return this.http.get(this.URL + 'category');
+  getActiveWorkout() {
+    return this.http.get(this.URL + 'workout/status/OPEN');
   }
 
   validateWorkout(workoutTemp: Workout) {
