@@ -10,6 +10,7 @@ import { UpdateWorkoutComponent } from './update-workout/update-workout.componen
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [
     AppComponent,
