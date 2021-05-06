@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+import { StartWorkoutComponent } from './start-workout/start-workout.component';
+import { EndWorkoutComponent } from './end-workout/end-workout.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { RouterModule } from '@angular/router';
     WorkoutFormComponent,
     FooterComponent,
     UpdateWorkoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    StartWorkoutComponent,
+    EndWorkoutComponent
   ],
   imports: [BrowserModule,RouterModule.forRoot([
     {path: 'create', component: CreateWorkoutComponent},
