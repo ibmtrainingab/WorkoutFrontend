@@ -1,12 +1,11 @@
 export class Workout {
     id:string;
-    title:string;
+    title:string="default";
     note:string;
-    caloriesBurnt:number;
+    caloriesBurnt:number=1;
     startDateTime:Date;
     endDateTime:Date;
     comment:string;
-    category:string;
+    category:string="ACTIVE";
     status:string;
-
 }
