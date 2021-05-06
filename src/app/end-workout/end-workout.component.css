@@ -1,6 +1,6 @@
 .form-group {
     position: relative;
-    margin-bottom: 8%;
+    margin-bottom: 1.5rem;
   }
   
   .form-control-placeholder {
@@ -24,7 +24,15 @@
     -webkit-appearance: none; 
     margin: 0; 
   }
-  button {
-    margin:5%;
-  }
 
+#btn1{
+  width: 65%;
+  padding-right: 5px;
+}
+#btn2{
+  width: 30%;
+}
+.bn:after {
+  content:" *";
+  color: red;
+}
