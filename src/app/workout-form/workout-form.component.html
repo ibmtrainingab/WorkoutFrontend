@@ -1,0 +1,29 @@
+<div class="form-group">
+    <input type="text" id="title" class="form-control" required [(ngModel)]=workout.title>
+    <label class="form-control-placeholder" for="title">Title</label>
+</div>
+<div class="form-group">
+    <textarea type="note" id="note" class="form-control" required [(ngModel)]=workout.note></textarea>
+    <label class="form-control-placeholder" for="note">Note</label>
+</div>
+<div class="form-group">
+    <div class="d-flex justify-content-left">
+        <input type="text" class="form-control" id="inputCalories" required [(ngModel)]=workout.caloriesBurnt>
+        <label class="form-control-placeholder" for="inputCalories">Calories</label>
+        <button (click)='caloriesPlusMinus(1)' type="button" class="btn btn-link" style="padding: 1%;margin: 0px;"><i
+                class='fas fa-plus'></i>
+        </button>
+        <button (click)='caloriesPlusMinus(-1)' type="button" class="btn btn-link" style="padding: 1%;margin: 0px;"><i
+                class="fa fa-minus"></i></button>
+    </div>
+</div>
+<div class="form-group">
+    <select id="inputState" *ngFor='let category of categories; index as i' class="form-control"
+        [(ngModel)]=workout.category>
+        <option>{{category.title}}</option>
+    </select>
+</div>
+<div class="form-group form-inline" style="margin: 4%;justify-content: center">
+    <button type="button" class="btn btn-primary" (click)='sendWorkout()'>{{parent.button}}</button>
+    <button type="button" id="cancelUpdate" class="btn btn-primary" (click)='cancelUpdate()'>Cancel</button>
+</div>
