@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { from } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
