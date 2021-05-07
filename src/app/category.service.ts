@@ -12,7 +12,7 @@ export class CategoryService {
 
 
   addCategory(category: Category) {
-    return this.http.post(this.URL + 'category',category,{ headers: { "content-type": 'application/json' } });
+    return this.http.post(this.URL + 'category',category,{ headers: { "content-type": 'application/json' },responseType: "text" });
   }
 
 

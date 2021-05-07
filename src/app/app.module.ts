@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +13,8 @@ import { EndWorkoutComponent } from './end-workout/end-workout.component';
 import { StartWorkoutComponent } from './start-workout/start-workout.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { FormsModule } from '@angular/forms';
+import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,11 @@ import { FormsModule } from '@angular/forms';
     EndWorkoutComponent,
     StartWorkoutComponent,
     UpdateWorkoutComponent,
+    CategoryWorkoutComponent
 
   ],
   imports: [
-    BrowserModule,FormsModule
+    BrowserModule,FormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
