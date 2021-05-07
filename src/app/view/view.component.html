@@ -1,0 +1,53 @@
+
+    <div class="row mt-md-4">
+        <div class="col-md-7 mx-auto">
+            <div class="form-group">
+               
+                <input type="text" id="search" class="form-control" placeholder="Search " value="search" onfocus="search()">
+                <span></span>
+                <li ng-repeat="x in workout1 | filter : 'search'">
+                  {{ workout.title }}
+                  </li>
+               
+            </div>
+        </div>
+        </div>
+        <div>
+          <div class="col-md-7 mx-auto">
+            <div class="table-responsive">
+ 
+              <table class="table" *ngFor='let workout1 of workoutarray; index as i'>
+                  <tr>
+               
+                       <th id="text"><i>{{workout1.title}}</i></th>   
+               
+                  </tr>
+                <tbody>
+               
+                  <tr>
+               
+              
+                <td>
+                  <button type="button"  id= "btn3" class="btn btn-success" (click)="simpleAlert()">Start</button>
+                </td>
+                <td>
+                  <button type="button"  id= "btn2" class="btn btn-danger" (click)="confirmBox()">Delete</button>
+                </td>
+                <td>
+                  <button type="button"  id= "btn1" class="btn btn-primary" (click)="EditBox()">Edit</button>
+                </td>
+                <td>
+                  <button type="button"  id= "btn4" class="btn btn-warning" disabled>End</button>
+                </td>
+                  
+               
+                   </tr>
+          
+                </tbody>
+               
+              </table>
+               
+               
+               
+              </div>
+          </div>
