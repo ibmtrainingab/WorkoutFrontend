@@ -8,12 +8,13 @@ import { CategoryWorkoutComponent } from './category-workout/category-workout.co
 import { FooterComponent } from './footer/footer.component';
 import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
-import { ViewComponent } from './view/view.component';
 import { WorkoutTemplateComponent } from './workout-template/workout-template.component';
 import { EndWorkoutComponent } from './end-workout/end-workout.component';
 import { StartWorkoutComponent } from './start-workout/start-workout.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     WorkoutFormComponent,
     CreateWorkoutComponent,
-    ViewComponent,
     WorkoutTemplateComponent,
     EndWorkoutComponent,
     StartWorkoutComponent,
@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     CategoryWorkoutComponent
   ],
   imports: [
-    BrowserModule,FormsModule
+    BrowserModule,FormsModule, HttpClientModule,Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

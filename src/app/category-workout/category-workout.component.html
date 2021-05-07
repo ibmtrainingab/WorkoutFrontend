@@ -1,51 +1,65 @@
 <div>
-    <h2><strong>Add Category</strong></h2>
+  <h2><strong>Add Category</strong></h2>
 </div>
 
-<div class="col-md-12 mx-auto">
-    <input type="text" id="title" class="form-control" placeholder="Search here..." required>
-</div>
-
-<!-- <div class="form-group">
-    <div class="d-flex justify-content-center">
-        <input type="text" class="form-control" id="searchCategory" required>
-        <button type="button" class="btn btn-link" style="padding: 1%;margin: 0px;"><i class='fas fa-plus'></i></button>
-    </div>
-</div> -->
-<br>
-<br>
 <div class="form-group">
-    <div class="col-md-8 mx-auto">
-        <input type="text" class="form-control" id="inputCalories" placeholder="Add category" required [(ngModel)]=category.title>
-    </div>
-    <div class="col-md-4 mx-auto">
-        <button type="button" (click)='saveCategory()' class="btn btn-link" style="padding: 1%;border : 2px solid blue;margin: 0px;"><i
-                class='fas fa-plus'></i>
-        </button>
-    </div>
+  <div class="col-md-8 mx-auto">
+    <input
+      type="text"
+      class="form-control"
+      id="inputCalories"
+      placeholder="Add category"
+
+      [(ngModel)]="category.title"
+
+      required
+    />
+  </div>
+  <div class="col-md-4 mx-auto">
+    <button
+      type="button"
+      (click)="saveCategory()"
+      class="btn btn-link"
+      style="padding: 1%; border: 2px solid blue; margin: 0px"
+    >
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
 </div>
 <br>
 <br>
+<div class="col-md-12 mx-auto">
+  <input
+    type="text"
+    id="title"
+    class="form-control"
+    placeholder="Search here..."
+    [(ngModel)]="searchedKeyword"
+    required
+  />
+</div>
+
+<br />
+<br />
 <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class="table table-bordered">
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <tbody>
+          <tr *ngFor="let category of categoryArray|filter:searchedKeyword; index as i">
+            <td>{{ category.title }}</td>
 
-          <tbody>
-            <tr>
-              <!-- <th scope="row">1</th> -->
-              <td>Jogging</td>
-
-              <td>
-
-                <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>&nbsp;&nbsp;
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-              </td>
-            </tr>
-
-
-          </tbody>
-        </table>
-      </div>
+            <td>
+              <button type="button" (click)='this.updateCategory(category.id,i,category.title)' class="btn btn-success">
+                <i class="fas fa-edit"></i></button
+              >&nbsp;&nbsp;
+              <button type="button" (click)='this.deleteCategory(category.id,i)' class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>

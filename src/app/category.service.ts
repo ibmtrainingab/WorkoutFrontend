@@ -12,9 +12,19 @@ export class CategoryService {
 
 
   addCategory(category: Category) {
-    return this.http.post(this.URL + 'category',category,{ headers: { "content-type": 'application/json' } });
+    return this.http.post(this.URL + 'category',category,{ headers: { "content-type": 'application/json' },responseType:"text" });
   }
 
+  getAllCategories(){
+    return this.http.get(this.URL + 'category');
+  }
 
+  delete(id:string){
+    return this.http.delete(this.URL + 'category'+'/'+ id);
+  }
+  update(id:string, index:number, updatedBody:any) {
+    const endpointURL = this.URL + 'category'+ '/'+ id;
+    return this.http.put(endpointURL, index, updatedBody);
+  }
 
 }
