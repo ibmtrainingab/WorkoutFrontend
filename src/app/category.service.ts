@@ -22,9 +22,9 @@ export class CategoryService {
   delete(id:string){
     return this.http.delete(this.URL + 'category'+'/'+ id);
   }
-  update(id:string, index:number, updatedBody:any) {
+  update(id:string, updatedBody:any) {
     const endpointURL = this.URL + 'category'+ '/'+ id;
-    return this.http.put(endpointURL, index, updatedBody);
+    return this.http.put(endpointURL,updatedBody,{ headers: { "content-type": 'application/json' },responseType:"text" } );
   }
 
 }
