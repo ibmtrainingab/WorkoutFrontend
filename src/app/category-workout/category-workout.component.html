@@ -4,12 +4,24 @@
 
 <div class="form-group">
   <div class="col-md-8 mx-auto">
-    <input type="text" class="form-control" id="inputCalories" placeholder="Add category" [(ngModel)]="category.title"
-      required />
+    <input
+      type="text"
+      class="form-control"
+      id="inputCalories"
+      placeholder="Add category"
+
+      [(ngModel)]="category.title"
+
+      required
+    />
   </div>
   <div class="col-md-4 mx-auto">
-    <button type="button" (click)="saveCategory()" class="btn btn-link"
-      style="padding: 1%; border: 2px solid blue; margin: 0px">
+    <button
+      type="button"
+      (click)="saveCategory()"
+      class="btn btn-link"
+      style="padding: 1%; border: 2px solid blue; margin: 0px"
+    >
       <i class="fas fa-plus"></i>
     </button>
   </div>
@@ -17,8 +29,14 @@
 <br>
 <br>
 <div class="col-md-12 mx-auto">
-  <input type="text" id="title" class="form-control" placeholder="Search here..." [(ngModel)]="searchedKeyword"
-    required />
+  <input
+    type="text"
+    id="title"
+    class="form-control"
+    placeholder="Search here..."
+    [(ngModel)]="searchedKeyword"
+    required
+  />
 </div>
 
 <br />
@@ -33,7 +51,8 @@
 
             <td>
               <button type="button" (click)='this.updateCategory(category.id,i,category.title)' class="btn btn-success">
-                <i class="fas fa-edit"></i></button>&nbsp;&nbsp;
+                <i class="fas fa-edit"></i></button
+              >&nbsp;&nbsp;
               <button type="button" (click)='this.deleteCategory(category.id,i)' class="btn btn-danger">
                 <i class="far fa-trash-alt"></i>
               </button>

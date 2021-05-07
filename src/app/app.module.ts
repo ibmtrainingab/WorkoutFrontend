@@ -40,6 +40,7 @@ import { CategoryWorkoutComponent } from './category-workout/category-workout.co
     {path: 'create', component: CreateWorkoutComponent},
     {path: 'update', component: UpdateWorkoutComponent},
     {path: 'viewAll', component: ViewComponent},
+    {path:'category',component:CategoryWorkoutComponent},
     {path: '', redirectTo: '/viewAll', pathMatch: 'full'}
   ],{useHash: true}),
     BrowserModule,HttpClientModule,Ng2SearchPipeModule,FormsModule,
