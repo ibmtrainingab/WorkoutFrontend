@@ -16,10 +16,10 @@
 <br>
 <div class="form-group">
     <div class="col-md-8 mx-auto">
-        <input type="text" class="form-control" id="inputCalories" placeholder="Add category" required>
+        <input type="text" class="form-control" id="inputCalories" placeholder="Add category" required [(ngModel)]=category.title>
     </div>
     <div class="col-md-4 mx-auto">
-        <button type="button" class="btn btn-link" style="padding: 1%;border : 2px solid blue;margin: 0px;"><i
+        <button type="button" (click)='saveCategory()' class="btn btn-link" style="padding: 1%;border : 2px solid blue;margin: 0px;"><i
                 class='fas fa-plus'></i>
         </button>
     </div>
