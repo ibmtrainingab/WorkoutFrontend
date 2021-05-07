@@ -15,6 +15,7 @@ import { WorkoutTemplateComponent } from './workout-template/workout-template.co
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     WorkoutTemplateComponent,
     StartWorkoutComponent,
     EndWorkoutComponent,
-    UpdateWorkoutComponent
+    UpdateWorkoutComponent,
+    CategoryWorkoutComponent
   ],
   imports: [BrowserModule,RouterModule.forRoot([
     {path: 'create', component: CreateWorkoutComponent},
