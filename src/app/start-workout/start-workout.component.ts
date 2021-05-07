@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
@@ -9,14 +9,18 @@ import { WorkoutService } from '../workout.service';
 })
 export class StartWorkoutComponent implements OnInit {
 
-  workout: Workout = new Workout();
+  @Input() workout: Workout = new Workout();
+  @Output() workoutSuccess: EventEmitter<string> = new EventEmitter<string>();
   parent: any = { button: "Update" };
   workoutAny: any;
   dateString: any;
   constructor(private workoutService: WorkoutService) {
-    this.dateString = new Date();
-    var date =  this.dateString.getFullYear()+'-0'+( this.dateString.getMonth()+1)+'-0'+ this.dateString.getDate()+'T'+ this.dateString.getHours()+':'+ this.dateString.getMinutes()//new Date().toISOString();
-    this.workout.startDateTime = this.dateString;
+    // this.dateString = new Date();
+    // var date =  this.dateString.getFullYear()+'-0'+( this.dateString.getMonth()+1)+'-0'+ this.dateString.getDate()+'T'+ this.dateString.getHours()+':'+ this.dateString.getMinutes()//new Date().toISOString();
+    // this.workout.startDateTime = this.dateString;
+  }
+  successHandler(result: string) {
+    this.workoutSuccess.emit(result);
   }
 
   startWorkout(id: string) {
@@ -26,7 +30,7 @@ export class StartWorkoutComponent implements OnInit {
   }
 
   getFieldData(id: string) {
-    const promise = this.workoutService.getActiveWorkout(id);
+    const promise = this.workoutService.getActiveWorkout();
     promise.subscribe(response => {
       this.workoutAny = response;
       this.workout = this.workoutAny;
@@ -40,14 +44,15 @@ export class StartWorkoutComponent implements OnInit {
       });
   }
 
-  putWorkout(workoutTemp: Workout) {
-    if (!this.workoutService.validateWorkout(workoutTemp)) {
+  putWorkout() {
+    if (!this.workoutService.validateWorkout(this.workout)) {
       return;
     }
     const promise = this.workoutService.putWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
       alert("Workout Updated..");
+      this.successHandler('1');
     },
       error => {
         console.log(error);

@@ -34,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [BrowserModule,RouterModule.forRoot([
     {path: 'create', component: CreateWorkoutComponent},
-    {path: '', redirectTo: '/create', pathMatch: 'full'},
+    {path: 'update', component: UpdateWorkoutComponent},
+    {path: 'viewAll', component: ViewComponent},
+    {path: '', redirectTo: '/viewAll', pathMatch: 'full'}
   ],{useHash: true}),
     BrowserModule,HttpClientModule,FormsModule
   ],

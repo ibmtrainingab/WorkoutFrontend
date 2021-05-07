@@ -16,8 +16,8 @@
                     [(ngModel)]=workout.startDateTime>
             </div>
             <div class="form-group form-inline" style="margin: 4%;justify-content: center">
-                <button type="button" id="btn1" class="btn btn-success" (click)='putWorkout'> Start</button>&nbsp;&nbsp;
-                <button type="button" id="btn2" class="btn btn-danger"> Cancel</button>
+                <button type="button" id="btn1" class="btn btn-success" (click)=putWorkout()> Start</button>&nbsp;&nbsp;
+                <button type="button" id="btn2" class="btn btn-danger" (click)="successHandler('1')"> Cancel</button>
             </div>
         </div>
     </div>
