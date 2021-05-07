@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
@@ -8,22 +8,26 @@ import { WorkoutService } from '../workout.service';
   styleUrls: ['./update-workout.component.css']
 })
 export class UpdateWorkoutComponent implements OnInit {
-  workout:Workout= new Workout();
-  parent:any={button:"Update"};
-  workoutAny:any;
-  constructor(private workoutService: WorkoutService) { }
-
-  editBug(id: string) {
-    this.getFieldData(id);
-    document.getElementById('showBugTable').style.display = 'none';
-    document.getElementById('showEditBug').style.display = 'block';
+  @Input() workout: Workout = new Workout();
+  @Output() workoutSuccess: EventEmitter<string> = new EventEmitter<string>();
+  parent: any = { button: "Update" };
+  workoutAny: any;
+  workoutId: Workout;
+  fromParent:any;
+  constructor(private workoutService: WorkoutService) {
+    
   }
 
-  getFieldData(id:string) {
-    const promise = this.workoutService.getActiveWorkout(id);
+  successHandler(result: string) {
+    this.workoutSuccess.emit(result);
+  }
+
+
+  getFieldData() {
+    const promise = this.workoutService.getWorkout('1');
     promise.subscribe(response => {
       this.workoutAny = response;
-      this.workout=this.workoutAny;
+      this.workout = this.workoutAny;
       if (this.workout[0] == undefined) {
         return alert("No Records available  currently from server");
       }
@@ -42,6 +46,7 @@ export class UpdateWorkoutComponent implements OnInit {
     promise.subscribe(response => {
       console.log(response);
       alert("Workout Updated..");
+      this.successHandler('1');
     },
       error => {
         console.log(error);
@@ -55,6 +60,6 @@ export class UpdateWorkoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   // this.getFieldData();
   }
-
 }

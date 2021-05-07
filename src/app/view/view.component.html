@@ -1,53 +1,46 @@
+<div id="showView">
+  <div class="row mt-md-4">
+    <div class="col-md-7 mx-auto">
+      <div class="form-group">
+        <input type="text" id="search" [(ngModel)]="searchedkeyword" class="form-control" placeholder="Search ">
+        <span></span>
 
-    <div class="row mt-md-4">
-        <div class="col-md-7 mx-auto">
-            <div class="form-group">
-               
-                <input type="text" id="search" class="form-control" placeholder="Search " value="search" onfocus="search()">
-                <span></span>
-                <li ng-repeat="x in workout1 | filter : 'search'">
-                  {{ workout.title }}
-                  </li>
-               
-            </div>
-        </div>
-        </div>
-        <div>
-          <div class="col-md-7 mx-auto">
-            <div class="table-responsive">
- 
-              <table class="table" *ngFor='let workout1 of workoutarray; index as i'>
-                  <tr>
-               
-                       <th id="text"><i>{{workout1.title}}</i></th>   
-               
-                  </tr>
-                <tbody>
-               
-                  <tr>
-               
-              
-                <td>
-                  <button type="button"  id= "btn3" class="btn btn-success" (click)="simpleAlert()">Start</button>
-                </td>
-                <td>
-                  <button type="button"  id= "btn2" class="btn btn-danger" (click)="confirmBox()">Delete</button>
-                </td>
-                <td>
-                  <button type="button"  id= "btn1" class="btn btn-primary" (click)="EditBox()">Edit</button>
-                </td>
-                <td>
-                  <button type="button"  id= "btn4" class="btn btn-warning" disabled>End</button>
-                </td>
-                  
-               
-                   </tr>
-          
-                </tbody>
-               
-              </table>
-               
-               
-               
-              </div>
           </div>
+    </div>
+  </div>
+  <div class="col-md-7 mx-auto">
+    <div class="table-responsive">
+
+      <table class="table" *ngFor='let workout1 of workoutarray| filter:searchedkeyword; index as i'>
+        <tbody>
+          <tr>
+            <td id="text"><i>{{workout1.title}}</i><span  id="workoutStartShow" *ngIf="workout1.startDateTime">{{workout1.startDateTime}}</span></td>
+          </tr>
+          <tr>
+            <div class="d-flex justify-content-left" *ngIf="!workout1.startDateTime">
+              <button type="button" id="btn1" class="btn btn-success" (click)=startClick(workout1,i)>Start</button>
+              <button type="button" id="btn2" class="btn btn-warning" disabled (click)=endClick(workout1)>End</button>
+              <button type="button" id="btn3" class="btn btn-danger" (click)=deleteClick(workout1.id)>Delete</button>
+              <button type="button" id="btn4" class="btn btn-primary" (click)=editClick(workout1)>Edit</button>
+            </div>
+            <div class="d-flex justify-content-left" *ngIf="workout1.startDateTime">
+              <button type="button" id="btn1" class="btn btn-success" disabled (click)=startClick(workout1,i)>Start</button>
+              <button type="button" id="btn2" class="btn btn-warning" (click)=endClick(workout1)>End</button>
+              <button type="button" id="btn3" class="btn btn-danger" disabled (click)=deleteClick(workout1)>Delete</button>
+              <button type="button" id="btn4" class="btn btn-primary" disabled (click)=editClick(workout1)>Edit</button>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="showUpdate" style="display:none">
+  <app-update-workout (workoutSuccess)="workoutSuccess()" [workout]="workout"></app-update-workout>
+</div>
+<div id="showStart" style="display:none">
+  <app-start-workout (workoutSuccess)="workoutSuccess()" [workout]="workout"></app-start-workout>
+</div>
+<div id="showEnd" style="display:none">
+  <app-end-workout (workoutSuccess)="workoutSuccess()" [workout]="workout"></app-end-workout>
+</div>
