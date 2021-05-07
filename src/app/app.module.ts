@@ -8,6 +8,7 @@ import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { HeaderComponent } from './header/header.component';
+import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeaderComponent } from './header/header.component';
     WorkoutFormComponent,
     FooterComponent,
     UpdateWorkoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    CategoryWorkoutComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule
