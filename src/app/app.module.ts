@@ -9,6 +9,8 @@ import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { CreateWorkoutComponent } from './create-workout/create-workout.component';
 import { ViewComponent } from './view/view.component';
 import { WorkoutTemplateComponent } from './workout-template/workout-template.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { WorkoutTemplateComponent } from './workout-template/workout-template.co
     WorkoutTemplateComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,FormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
