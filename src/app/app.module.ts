@@ -15,6 +15,7 @@ import { UpdateWorkoutComponent } from './update-workout/update-workout.componen
 import { FormsModule } from '@angular/forms';
 import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CategoryWorkoutComponent
 
   ],
-  imports: [
-    BrowserModule,FormsModule,HttpClientModule
+  imports: [BrowserModule,RouterModule.forRoot([
+    {path: 'create', component: CreateWorkoutComponent},
+    {path: 'update', component: UpdateWorkoutComponent},
+    {path: 'viewAll', component: ViewComponent},
+    {path: '', redirectTo: '/viewAll', pathMatch: 'full'}
+  ],{useHash: true}),
+    BrowserModule,HttpClientModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

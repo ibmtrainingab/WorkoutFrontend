@@ -14,7 +14,7 @@
         class='fas fa-plus'></i>
     </button>
     <button (click)='caloriesPlusMinus(-1)' type="button" class="btn btn-link" style="padding: 1%;margin: 0px;"><i
-        class="fa fa-minus"></i></button>
+        class="fa fa-minus fa-spin"></i></button>
   </div>
 </div>
 <div class="form-group">
@@ -23,7 +23,7 @@
     <option>{{category.title}}</option>
   </select>
 </div>
-<div class="form-group form-inline" style="margin: 4%;justify-content: center">
-  <button type="button" class="btn btn-primary" (click)='sendWorkout()'>{{parent.button}}</button>
-  <button type="button" id="cancelUpdate" class="btn btn-primary" (click)='cancelUpdate()'>Cancel</button>
+<div class="form-group form-inline" style="margin: 0%;justify-content: center">
+  <button type="button" style="width: 40%;" class="btn btn-success" (click)='sendWorkout()'>{{parent.button}}</button>
+  <button type="button" style="width: 30%;" id="cancelUpdate" class="btn btn-info" (click)="sendWorkout1()">Cancel</button>
 </div>
