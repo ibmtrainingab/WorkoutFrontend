@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
@@ -8,7 +8,7 @@ import { WorkoutService } from '../workout.service';
   styleUrls: ['./update-workout.component.css']
 })
 export class UpdateWorkoutComponent implements OnInit {
-  workout:Workout= new Workout();
+  @Input() workout:Workout= new Workout();
   parent:any={button:"Update"};
   workoutAny:any;
   constructor(private workoutService: WorkoutService) { }
@@ -20,7 +20,7 @@ export class UpdateWorkoutComponent implements OnInit {
   }
 
   getFieldData(id:string) {
-    const promise = this.workoutService.getActiveWorkout(id);
+    const promise = this.workoutService.getActiveWorkout();
     promise.subscribe(response => {
       this.workoutAny = response;
       this.workout=this.workoutAny;

@@ -24,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     WorkoutFormComponent,
     CreateWorkoutComponent,
     ViewComponent,
-    WorkoutTemplateComponent
+    WorkoutTemplateComponent,
+    StartWorkoutComponent,
+    EndWorkoutComponent,
+    UpdateWorkoutComponent
   ],
   imports: [BrowserModule,RouterModule.forRoot([
     {path: 'create', component: CreateWorkoutComponent},

@@ -6,12 +6,18 @@ import { Workout } from './Workout';
   providedIn: 'root'
 })
 export class WorkoutService {
+  deleteWorkout(id: string) {
+    return this.http.delete(this.URL +id);
+  }
+  getWorkout(id: string) {
+    return this.http.get(this.URL + 'workout/'+id);
+  }
 
   URL: string = "http://localhost:8081/";
   constructor(private http: HttpClient) { };
 
   putWorkout(workout: Workout) {
-    return this.http.put(this.URL + workout.id, workout, { headers: { "content-type": 'application/json' } });
+    return this.http.put(this.URL + 'workout/' + workout.id, workout, { headers: { "content-type": 'application/json' } });
   }
   getActiveWorkout() {
     return this.http.get(this.URL + 'workout');
@@ -20,6 +26,10 @@ export class WorkoutService {
   validateWorkout(workoutTemp: Workout) {
     return 1;
   }
+  getWorkouts(id: string) {
+    return this.http.get(this.URL + '');
+  }
+
   getCategories() {
     return this.http.get(this.URL + 'category');
   }
@@ -27,3 +37,5 @@ export class WorkoutService {
     return this.http.post(this.URL + 'workout', workout, { headers: { "content-type": 'application/json' } });
   }
 }
+
+
