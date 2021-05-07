@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
@@ -38,31 +39,45 @@ export class EndWorkoutComponent implements OnInit {
     const promise1 = this.workoutService.postWorkout(newWorkout);
     promise1.subscribe(response => {
       console.log(response);
-      alert("Workout created..");
+      //alert("Workout created..");
       //this.successHandler('1');
     },
       error => {
         console.log(error);
         if (error.status != 201) {
-          alert("Error !! : " + error.headers.get("error"));
+          Swal.fire(
+            'Failed!',
+            'Workout Creation Failed while updating! ' + error.error
+          )
         }
-        else {
-          alert("Workout created..");
-        }
+        // else {
+        //   alert("Workout created..");
+        // }
       });
     const promise = this.workoutService.putWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
-      alert("Workout Updated..");
+      Swal.fire(
+        'Ended!',
+        'Workout Ended Successfully!.',
+        'success'
+      )
       this.successHandler('1');
     },
       error => {
         console.log(error);
         if (error.status != 201) {
-          alert("Error !! : " + error.headers.get("error"));
+          Swal.fire(
+            'Failed!',
+            'Workout Creation Failed ! ' + error.error
+          )
         }
         else {
-          alert("Workout Updated..");
+          Swal.fire(
+            'Ended!',
+            'Workout Ended Successfully!.',
+            'success'
+          )
         }
       })
   }

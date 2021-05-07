@@ -25,6 +25,8 @@
     margin: 0; 
   }
   button {
-    margin:5%;
+    margin:2%;
+    width: 10%;
+    justify-content: center;
   }
 

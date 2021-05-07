@@ -7,10 +7,10 @@ import { Workout } from './Workout';
 })
 export class WorkoutService {
   deleteWorkout(id: string) {
-    return this.http.delete(this.URL +id);
+    return this.http.delete(this.URL + 'workout/' + id);
   }
   getWorkout(id: string) {
-    return this.http.get(this.URL + 'workout/'+id);
+    return this.http.get(this.URL + 'workout/' + id);
   }
 
   URL: string = "http://localhost:8081/";

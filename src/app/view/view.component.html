@@ -13,7 +13,8 @@
       <table class="table" *ngFor='let workout1 of workoutarray; index as i'>
         <tbody>
           <tr>
-            <td id="text"><i>{{workout1.title}}</i><span  id="workoutStartShow" *ngIf="workout1.startDateTime">{{workout1.startDateTime}}</span></td>
+            <td id="text"><i>{{workout1.title}}</i><span style="float: right;" id="workoutStartShow" *ngIf="workout1.startDateTime"><div style="float:right;font-size: 1em; ">
+              <i class="fas fa-biking"> </i> <span style="color: red;" >  <i class="fas fa-heartbeat"></i> </span> <small> Started at {{workout1.startDateTime | date:'mediumTime'}}</small></div></span></td>
           </tr>
           <tr>
             <div class="d-flex justify-content-left" *ngIf="!workout1.startDateTime">

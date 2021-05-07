@@ -49,14 +49,13 @@ export class ViewComponent implements OnInit {
         const promise = this.workoutService.deleteWorkout(id);
         promise.subscribe(response => {
           this.workoutarray = response;
-
-          if (1) {
-            return alert("success");
-          }
         },
           error => {
             if (error.status != 200)
-              return alert("Unable to fetch records from server");
+              return (Swal.fire(
+                'Cancelled',
+                'Due problem with server deletion failed )',
+              ))
           });
         Swal.fire(
           'Deleted!',
@@ -68,6 +67,7 @@ export class ViewComponent implements OnInit {
           'Cancelled',
           'Your Entry is safe :)',
         )
+        window.location.reload();
       }
     })
   }
