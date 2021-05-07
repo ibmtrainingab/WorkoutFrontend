@@ -3,8 +3,11 @@
         <div class="col-md-7 mx-auto">
             <div class="form-group">
                
-                <input type="text" id="search" class="form-control" placeholder="Search " onfocus="search()">
+                <input type="text" id="search" class="form-control" placeholder="Search " value="search" onfocus="search()">
                 <span></span>
+                <li ng-repeat="x in workout1 | filter : 'search'">
+                  {{ workout.title }}
+                  </li>
                
             </div>
         </div>

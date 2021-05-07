@@ -67,8 +67,10 @@ export class ViewComponent implements OnInit {
       }
     })
   }
-
- 
+serach()
+{
+  
+} 
   getFieldData(id:string) {
     const promise = this.workoutService.getActiveWorkout();
     promise.subscribe(response => {
