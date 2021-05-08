@@ -13,8 +13,11 @@ import { CreateWorkoutComponent } from './create-workout/create-workout.componen
 import { ViewComponent } from './view/view.component';
 import { WorkoutTemplateComponent } from './workout-template/workout-template.component';
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgModuleCompiler } from '@angular/compiler';
+import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
 import { TrackWorkoutComponent } from './track-workout/track-workout.component';
 import { ChartsModule } from 'ng2-charts';
 import * as Chart from 'chart.js';
@@ -34,6 +37,7 @@ import * as Chart from 'chart.js';
     HeaderComponent,
     StartWorkoutComponent,
     EndWorkoutComponent,
+
     TrackWorkoutComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot([
@@ -43,7 +47,7 @@ import * as Chart from 'chart.js';
     { path: 'track', component: TrackWorkoutComponent },
     { path: '', redirectTo: '/viewAll', pathMatch: 'full' }
   ], { useHash: true }),
-    BrowserModule, HttpClientModule, FormsModule, ChartsModule
+    BrowserModule, HttpClientModule, FormsModule, Ng2SearchPipeModule, ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
