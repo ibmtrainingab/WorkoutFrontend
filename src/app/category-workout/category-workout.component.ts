@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../Category';
 import { CategoryService } from '../category.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-workout',
@@ -13,46 +13,66 @@ export class CategoryWorkoutComponent implements OnInit {
   category: Category = new Category();
   categoryArray: any;
   searchedKeyword:string;
+
   constructor(private categoryService: CategoryService) { }
   saveCategory() {
     const observable = this.categoryService.addCategory(this.category);
     observable.subscribe(response => {
       console.log(response);
-      alert("category added succesfully..");
+      Swal.fire("category added succesfully..");
       window.location.reload();
     },
       error => {
         console.log(error);
-        alert("error happened")
+        Swal.fire("error happened")
       })
   }
 
   deleteCategory(id:string, index:number){
-    let ask = confirm("Please confirm for deletion: " + id);
+    let ask = confirm("Please confirm for deletion: ");
     if (!ask) {
       return;
     }
     const observable = this.categoryService.delete(id);
-    observable.subscribe(response=>{ this.categoryArray.splice(index,1);alert("Category deleted...")})
+    observable.subscribe(response=>{ this.categoryArray.splice(index,1);
+      Swal.fire("Category deleted...")})
   }
 
-  updateCategory(id:string,index:number,ask:string){
+  // updateCategory(id:string,category:Category){
 
-     ask = prompt("Enter the category...");
-    if(ask!=''){
-      this.categoryService.update(id, index, ask).subscribe(
-        response => {
-          console.log(response);
-          // this.categoryArray[index]=this.categoryArray[index];
-          alert("Category updated....");
-        },
-        error =>{
-          alert("error!");
-        }
-      )
+  //   category.title = prompt("Enter the category...");
+  //   if(category.title!=''){
+  //     this.categoryService.update(id,category.title).subscribe(
+  //       response => {
+  //         console.log(response);
+  //         // this.categoryArray[index]=this.categoryArray[index];
+  //         alert("Category updated....");
+  //       },
+  //       error =>{
+  //         alert("error!");
+  //       }
+  //     )
+  //   }
+  // }
+
+  update1(index:number,id:string){
+    console.log(this.categoryArray[index].title);
+    let ask=prompt("Enter category");
+    if(ask===''){
+      return;
     }
-  }
+    this.category.title=ask;
+    console.log(this.category.title);
+    const observable=this.categoryService.update(id,this.category);
+    observable.subscribe(response=>{
+      this.categoryArray[index].title=ask;
+      Swal.fire("Category updated");
+    },
+    error=>{
+      Swal.fire("error occured");
+    });
 
+  }
 
 
   ngOnInit(): void {
