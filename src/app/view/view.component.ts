@@ -4,11 +4,13 @@ import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
+  
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
+
 export class ViewComponent implements OnInit {
   workoutarray: any;
   workout: Workout = new Workout();
@@ -96,4 +98,6 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
 
   }
+ 
 }
+

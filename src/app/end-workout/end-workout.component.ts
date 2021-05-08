@@ -36,24 +36,7 @@ export class EndWorkoutComponent implements OnInit {
     newWorkout.caloriesBurnt = this.workout.caloriesBurnt;
     newWorkout.category = this.workout.category;
     newWorkout.status = "OPEN";
-    const promise1 = this.workoutService.postWorkout(newWorkout);
-    promise1.subscribe(response => {
-      console.log(response);
-      //alert("Workout created..");
-      //this.successHandler('1');
-    },
-      error => {
-        console.log(error);
-        if (error.status != 201) {
-          Swal.fire(
-            'Failed!',
-            'Workout Creation Failed while updating! ' + error.error
-          )
-        }
-        // else {
-        //   alert("Workout created..");
-        // }
-      });
+
     const promise = this.workoutService.putWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
@@ -62,6 +45,21 @@ export class EndWorkoutComponent implements OnInit {
         'Workout Ended Successfully!.',
         'success'
       )
+      const promise1 = this.workoutService.postWorkout(newWorkout);
+      promise1.subscribe(response => {
+        console.log(response);
+        //alert("Workout created..");
+        //this.successHandler('1');
+      },
+        error => {
+          console.log(error);
+          if (error.status != 201) {
+            Swal.fire(
+              'Failed!',
+              'Workout Creation Failed while updating! ' + error.error
+            )
+          }
+        });
       this.successHandler('1');
     },
       error => {
