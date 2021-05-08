@@ -3,28 +3,21 @@
         <div class="col-md-6 mx-auto">
             <div class="form-group">
                 <label><strong>Title</strong><span class="bn"></span></label>
-                <input type="text" id="title" class="form-control" required length=500>
+                <input type="text" id="title" class="form-control" required length=500 [(ngModel)]=workout.title>
                 <span></span>
-               
             </div>
             <div class="form-group">
                 <label><strong>Note</strong><span class="bn"></span></label>
-                <textarea type="note" id="note" class="form-control" required></textarea>
-               
+                <textarea type="note" id="note" class="form-control" required [(ngModel)]=workout.note></textarea>
             </div>
             <div class="form-group">
-                
-                    <label><strong>Enter Start Date and Time:</strong></label>
-                    <input type="datetime-local" class="form-control" id="inputstartdate" placeholder="Start Date">
-                 
-                    
-                
+                <label><strong>Enter Start Date and Time:</strong></label>
+                <input type="datetime-local" class="form-control" id="inputstartdate" placeholder="Start Date"
+                    [(ngModel)]=workout.startDateTime>
             </div>
-            
-          
             <div class="form-group form-inline" style="margin: 4%;justify-content: center">
-                <button type="button"  id= "btn1" class="btn btn-success"> Start</button>&nbsp;&nbsp;
-                <button type="button"  id= "btn2" class="btn btn-danger"> Cancel</button>
+                <button type="button" id="btn1" class="btn btn-success" (click)=putWorkout()> Start</button>&nbsp;&nbsp;
+                <button type="button" id="btn2" class="btn btn-danger" (click)="successHandler('1')"> Cancel</button>
             </div>
         </div>
     </div>

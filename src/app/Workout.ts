@@ -7,5 +7,6 @@ export class Workout {
     endDateTime:Date;
     comment:string;
     category:string="ACTIVE";
-    status:string;
+    status:string="OPEN";
+    started:string="started";
 }

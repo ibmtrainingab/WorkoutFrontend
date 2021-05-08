@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
@@ -22,15 +23,27 @@ export class CreateWorkoutComponent implements OnInit {
     const promise = this.workoutService.postWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
-      alert("Workout Created..");
+      Swal.fire(
+        'Created!',
+        'Workout Created Successfully!.',
+        'success'
+      )
     },
       error => {
         console.log(error);
         if (error.status != 201) {
-          alert("Error !! : " + error.headers.get("error"));
+          Swal.fire(
+            'Failed!',
+            'Workout Creation Failed ! '+error.error
+          )
+          console.log(error.error)
         }
         else {
-          alert("Workout Created..");
+          Swal.fire(
+            'Created!',
+            'Workout Created Successfully!.',
+            'success'
+          )
         }
       })
   }

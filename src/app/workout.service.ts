@@ -6,12 +6,21 @@ import { Workout } from './Workout';
   providedIn: 'root'
 })
 export class WorkoutService {
+  getTrackWorkout(trackDate: Date) {
+    return this.http.get(this.URL + 'workout/date/' + trackDate + 'T00:00:00');
+  }
+  deleteWorkout(id: string) {
+    return this.http.delete(this.URL + 'workout/' + id);
+  }
+  getWorkout(id: string) {
+    return this.http.get(this.URL + 'workout/' + id);
+  }
 
   URL: string = "http://localhost:8081/";
   constructor(private http: HttpClient) { };
 
   putWorkout(workout: Workout) {
-    return this.http.put(this.URL + workout.id, workout, { headers: { "content-type": 'application/json' } });
+    return this.http.put(this.URL + 'workout/' + workout.id, workout, { headers: { "content-type": 'application/json' } });
   }
   getActiveWorkout() {
     return this.http.get(this.URL + 'workout/status/OPEN');
@@ -20,6 +29,10 @@ export class WorkoutService {
   validateWorkout(workoutTemp: Workout) {
     return 1;
   }
+  getWorkouts(id: string) {
+    return this.http.get(this.URL + '');
+  }
+
   getCategories() {
     return this.http.get(this.URL + 'category');
   }
