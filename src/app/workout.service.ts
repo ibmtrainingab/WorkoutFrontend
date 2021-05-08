@@ -6,6 +6,9 @@ import { Workout } from './Workout';
   providedIn: 'root'
 })
 export class WorkoutService {
+  getTrackWorkout(trackDate: Date) {
+    return this.http.get(this.URL + 'workout/date/' + trackDate + 'T00:00:00');
+  }
   deleteWorkout(id: string) {
     return this.http.delete(this.URL + 'workout/' + id);
   }

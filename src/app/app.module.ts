@@ -15,6 +15,9 @@ import { WorkoutTemplateComponent } from './workout-template/workout-template.co
 import { UpdateWorkoutComponent } from './update-workout/update-workout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TrackWorkoutComponent } from './track-workout/track-workout.component';
+import { ChartsModule } from 'ng2-charts';
+import * as Chart from 'chart.js';
 
 @NgModule({
   declarations: [
@@ -30,15 +33,17 @@ import { HttpClientModule } from '@angular/common/http';
     UpdateWorkoutComponent,
     HeaderComponent,
     StartWorkoutComponent,
-    EndWorkoutComponent
+    EndWorkoutComponent,
+    TrackWorkoutComponent
   ],
-  imports: [BrowserModule,RouterModule.forRoot([
-    {path: 'create', component: CreateWorkoutComponent},
-    {path: 'update', component: UpdateWorkoutComponent},
-    {path: 'viewAll', component: ViewComponent},
-    {path: '', redirectTo: '/viewAll', pathMatch: 'full'}
-  ],{useHash: true}),
-    BrowserModule,HttpClientModule,FormsModule
+  imports: [BrowserModule, RouterModule.forRoot([
+    { path: 'create', component: CreateWorkoutComponent },
+    { path: 'update', component: UpdateWorkoutComponent },
+    { path: 'viewAll', component: ViewComponent },
+    { path: 'track', component: TrackWorkoutComponent },
+    { path: '', redirectTo: '/viewAll', pathMatch: 'full' }
+  ], { useHash: true }),
+    BrowserModule, HttpClientModule, FormsModule, ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
