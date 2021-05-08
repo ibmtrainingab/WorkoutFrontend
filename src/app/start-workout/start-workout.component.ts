@@ -26,6 +26,10 @@ export class StartWorkoutComponent implements OnInit {
     if (!this.workoutService.validateWorkout(this.workout)) {
       return;
     }
+    function setDelay() {
+      setTimeout(function () {
+      }, 4000);
+    }
     let tempdate: any = this.workout.startDateTime + '.000+05:30'
     this.workout.startDateTime = tempdate;
     const promise = this.workoutService.putWorkout(this.workout);
@@ -36,6 +40,7 @@ export class StartWorkoutComponent implements OnInit {
         'Workout Satred Successfully!.',
         'success'
       )
+      setDelay();
       this.successHandler('1');
     },
       error => {

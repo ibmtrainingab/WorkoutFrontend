@@ -17,9 +17,6 @@ export class EndWorkoutComponent implements OnInit {
   workoutAny: any;
   dateString: any;
   constructor(private workoutService: WorkoutService) {
-    // this.dateString = new Date();
-    // var date =  this.dateString.getFullYear()+'-0'+( this.dateString.getMonth()+1)+'-0'+ this.dateString.getDate()+'T'+ this.dateString.getHours()+':'+ this.dateString.getMinutes()//new Date().toISOString();
-    // this.workout.startDateTime = this.dateString;
   }
   successHandler(result: string) {
     this.workoutSuccess.emit(result);
@@ -36,7 +33,14 @@ export class EndWorkoutComponent implements OnInit {
     newWorkout.caloriesBurnt = this.workout.caloriesBurnt;
     newWorkout.category = this.workout.category;
     newWorkout.status = "OPEN";
+    let tempdate: any = this.workout.endDateTime + '.000+05:30'
+    this.workout.endDateTime = tempdate;
 
+
+    function setDelay() {
+      setTimeout(function () {
+      }, 4000);
+    }
     const promise = this.workoutService.putWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
@@ -56,11 +60,13 @@ export class EndWorkoutComponent implements OnInit {
           if (error.status != 201) {
             Swal.fire(
               'Failed!',
-              'Workout Creation Failed while updating! ' + error.error
+              'Workout Failed while updating! ' + error.error
             )
           }
         });
+      setDelay();
       this.successHandler('1');
+
     },
       error => {
         console.log(error);

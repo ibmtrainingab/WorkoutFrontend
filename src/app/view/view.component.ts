@@ -18,6 +18,8 @@ export class ViewComponent implements OnInit {
   id: string;
   buttonStatus: any = { start: "", end: "", edit: "", delete: "btn btn-danger disabled" }
   workoutId: Workout;
+  searchedKeyword:string;
+  
   constructor(private workoutService: WorkoutService) { this.getFieldData() }
 
   startClick(workout: Workout, i: number) {
