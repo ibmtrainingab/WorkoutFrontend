@@ -19,13 +19,51 @@ export class TrackWorkoutComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
   barChartData: ChartDataSets[] = [
-    { data: [], label: 'Best Fruits' }
+    { data: [], label: 'Calories Burnt per Workout' }
   ];
   workout: Workout;
   trackDate: Date;
   workoutArray: any;
-  deleteWorkout(id: string) {
+  deleteWorkout(id: string, name: string) {
+    Swal.fire({
+      title: 'Are you sure want to Delete this Workout?',
+      text: 'You will not be able to recover this in future!!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        const observable = this.workoutService.deleteWorkout(id);
+        observable.subscribe(response => {
+          console.log(response);
+          Swal.fire(
+            'Deleted!',
+            'Workout Deleted Successfully!.',
+            'success'
+          )
+          return this.showChart();
+        },
+          error => {
+            console.log(error);
+            if (error.status != 200) {
+              Swal.fire(
+                'Deletion Failed!',
+                'Workout Deletion Failed!.'
+              )
+            }
+            else {
+              Swal.fire(
+                'Deleted!',
+                'Workout Deleted Successfully!.',
+                'success'
+              )
+              this.showChart();
+            }
+          });
 
+      }
+    })
   }
   show(synopsis: string) {
     document.getElementById('showSynopsis').innerHTML = synopsis;
@@ -47,9 +85,9 @@ export class TrackWorkoutComponent implements OnInit {
         //return diffInMs / 1000;
         // var diff =(this.workoutArray[i].startDateTime.parse- this.workoutArray[i].endDateTime.parse) / 1000;
         //diff /= 60;
-        console.log(Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt)))
+        console.log(Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt/60)))
           ;
-        this.barChartData[0].data[i] = Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt));
+        this.barChartData[0].data[i] = Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt/60));
         this.barChartLabels[i] = this.workoutArray[i].title;
       }
       // Swal.fire(
@@ -76,7 +114,14 @@ export class TrackWorkoutComponent implements OnInit {
   constructor(private workoutService: WorkoutService) { }
 
   ngOnInit(): void {
+    var today = new Date();
 
+    let temp: Date = new Date((today.getFullYear()), today.getMonth(), today.getDate() - 6);
+    let tempp: any = temp.toISOString().split("T")[0];
+    this.trackDate = tempp;
+    //let temp:any;
+    // temp=this.trackDate.toLocaleDateString();
+    this.showChart();
   }
 
 }
