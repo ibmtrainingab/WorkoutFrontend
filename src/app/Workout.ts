@@ -1,7 +1,7 @@
 export class Workout {
     id:string;
-    title:string="default";
-    note:string;
+    title:string="";
+    note:string="";
     caloriesBurnt:number=1;
     startDateTime:Date;
     endDateTime:Date;

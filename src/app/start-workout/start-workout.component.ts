@@ -15,11 +15,13 @@ export class StartWorkoutComponent implements OnInit {
   parent: any = { button: "Update" };
   workoutAny: any;
   dateString: any;
+  
   constructor(private workoutService: WorkoutService) {
     // this.dateString = new Date();
     // var date =  this.dateString.getFullYear()+'-0'+( this.dateString.getMonth()+1)+'-0'+ this.dateString.getDate()+'T'+ this.dateString.getHours()+':'+ this.dateString.getMinutes()//new Date().toISOString();
     // this.workout.startDateTime = this.dateString;
   }
+  
   successHandler(result: string) {
     this.workoutSuccess.emit(result);
   }

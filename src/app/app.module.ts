@@ -16,6 +16,9 @@ import { UpdateWorkoutComponent } from './update-workout/update-workout.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
+import { TrackComponent } from './track/track.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { CategoryWorkoutComponent } from './category-workout/category-workout.co
     StartWorkoutComponent,
     EndWorkoutComponent,
     UpdateWorkoutComponent,
-    CategoryWorkoutComponent
+    CategoryWorkoutComponent,
+    TrackComponent
   ],
   imports: [BrowserModule,RouterModule.forRoot([
     {path: 'create', component: CreateWorkoutComponent},
@@ -37,7 +41,7 @@ import { CategoryWorkoutComponent } from './category-workout/category-workout.co
     {path: 'viewAll', component: ViewComponent},
     {path: '', redirectTo: '/viewAll', pathMatch: 'full'}
   ],{useHash: true}),
-    BrowserModule,HttpClientModule,FormsModule,Ng2SearchPipeModule
+    BrowserModule,HttpClientModule,FormsModule,Ng2SearchPipeModule, BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
