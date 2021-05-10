@@ -12,12 +12,7 @@ export class CategoryWorkoutComponent implements OnInit {
 
   category: Category = new Category();
   categoryArray: any;
-<<<<<<< HEAD
-  searchedKeyword:string;
-
-=======
   searchedKeyword: string;
->>>>>>> 05b9071663af63c06fc8aee7eadff58e70e882af
   constructor(private categoryService: CategoryService) { }
   saveCategory() {
     const observable = this.categoryService.addCategory(this.category);
@@ -44,45 +39,6 @@ export class CategoryWorkoutComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
-  // updateCategory(id:string,category:Category){
-
-  //   category.title = prompt("Enter the category...");
-  //   if(category.title!=''){
-  //     this.categoryService.update(id,category.title).subscribe(
-  //       response => {
-  //         console.log(response);
-  //         // this.categoryArray[index]=this.categoryArray[index];
-  //         alert("Category updated....");
-  //       },
-  //       error =>{
-  //         alert("error!");
-  //       }
-  //     )
-  //   }
-  // }
-
-  update1(index:number,id:string){
-    console.log(this.categoryArray[index].title);
-    let ask=prompt("Enter category");
-    if(ask===''){
-      return;
-    }
-    this.category.title=ask;
-    console.log(this.category.title);
-    const observable=this.categoryService.update(id,this.category);
-    observable.subscribe(response=>{
-      this.categoryArray[index].title=ask;
-      alert("Category updated");
-    },
-    error=>{
-      alert("error occured");
-    });
-
-  }
-
-
-=======
   update1(index: number, id: string) {
     console.log(this.categoryArray[index].title);
     let ask = prompt("Enter category");
@@ -101,7 +57,6 @@ export class CategoryWorkoutComponent implements OnInit {
       });
   }
 
->>>>>>> 05b9071663af63c06fc8aee7eadff58e70e882af
   ngOnInit(): void {
     const observable = this.categoryService.getAllCategories();
     observable.subscribe(response => {
