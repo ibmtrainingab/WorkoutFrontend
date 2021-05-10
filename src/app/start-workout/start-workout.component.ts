@@ -16,6 +16,7 @@ export class StartWorkoutComponent implements OnInit {
   workoutAny: any;
   dateString: any;
   constructor(private workoutService: WorkoutService) {
+    
   }
   successHandler(result: string) {
     this.workoutSuccess.emit(result);
@@ -28,6 +29,7 @@ export class StartWorkoutComponent implements OnInit {
     }
     function setDelay() {
       setTimeout(function () {
+        
       }, 4000);
     }
     let tempdate: any = this.workout.startDateTime + '.000+05:30'
@@ -62,6 +64,7 @@ export class StartWorkoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
   }
 
 }

@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
 
-  
+
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -18,12 +18,19 @@ export class ViewComponent implements OnInit {
   id: string;
   buttonStatus: any = { start: "", end: "", edit: "", delete: "btn btn-danger disabled" }
   workoutId: Workout;
-  searchedKeyword:string;
-  
+  searchedKeyword: string;
+
   constructor(private workoutService: WorkoutService) { this.getFieldData() }
 
   startClick(workout: Workout, i: number) {
     this.workout = workout;
+    // this.workout.startDateTime
+    // let temp:any=new Date().toISOString().split(".")[0]
+    // this.workout.startDateTime=temp;
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime:any = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -5);
+    this.workout.startDateTime=localISOTime;
+    console.log(this.workout.startDateTime);
     this.workoutarray[i].started = "started"
     document.getElementById('showView').style.display = 'none';
     document.getElementById('showStart').style.display = 'block';
@@ -37,10 +44,13 @@ export class ViewComponent implements OnInit {
   endClick(workout: Workout) {
     //this.getFieldData();
     this.workout = workout;
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime:any = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -5);
+    this.workout.endDateTime=localISOTime;
     document.getElementById('showView').style.display = 'none';
     document.getElementById('showEnd').style.display = 'block';
   }
-  deleteClick(id:string) {
+  deleteClick(id: string) {
     Swal.fire({
       title: 'Are you sure want to Delete this Workout?',
       text: 'You will not be able to recover this in future!!',
@@ -99,6 +109,6 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
 
   }
- 
+
 }
 
