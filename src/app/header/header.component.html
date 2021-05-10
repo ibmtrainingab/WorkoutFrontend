@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<header>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Workout Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="header.component.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <title>Document</title>
-</head>
-
-<body>
-  <header>
-    <div class="nav">
-      <input type="checkbox" id="nav-check">
-      <div class="nav-header">
-        <div class="nav-title">Workout Tracker</div>
-      </div>
-      <div class="nav-btn">
-        <label for="nav-check"> <span></span> <span></span> <span></span>
-        </label>
-      </div>
-
-      <div class="nav-links">
-        <a routerLink="/homepage" routerLinkActive="active">view All</a> <a routerLink="/createBug"
-          routerLinkActive="active">Create</a> <a routerLink="/update" routerLinkActive="active">category</a><a
-          routerLink="/search" routerLinkActive="active">Track</a>
-        <a routerLink="/contact" routerLinkActive="active">Contact</a>
-      </div>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/viewAll" routerLinkActive="active">View All</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/create" routerLinkActive="active">Create</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/category" routerLinkActive="active">Category</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/track" routerLinkActive="active">Track</a>
+        </li>
+      </ul>
     </div>
-  </header>
-</body>
-
-</html>
+  </nav>
+</header>

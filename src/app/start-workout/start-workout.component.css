@@ -36,3 +36,8 @@
   content:" *";
   color: red;
 }
+
+.bn:after {
+  content:" *";
+  color: red;
+}
