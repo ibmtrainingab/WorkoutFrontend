@@ -15,6 +15,11 @@ export class CategoryWorkoutComponent implements OnInit {
   searchedKeyword: string;
   constructor(private categoryService: CategoryService) { }
   saveCategory() {
+    if(!this.category.title)
+    {
+      Swal.fire("Category title cannot be blanked" );
+      return;
+    }
     const observable = this.categoryService.addCategory(this.category);
     observable.subscribe(response => {
       console.log(response);
@@ -35,14 +40,17 @@ export class CategoryWorkoutComponent implements OnInit {
     const observable = this.categoryService.delete(id);
     observable.subscribe(response => {
       this.categoryArray.splice(index, 1);
-      Swal.fire("Category deleted...")
-    })
+      Swal.fire("Category deleted...")},
+      error => {
+        console.log(error);
+        Swal.fire("Category Not Deleted - " + error.error)
+      });
   }
 
   update1(index: number, id: string) {
     console.log(this.categoryArray[index].title);
     let ask = prompt("Enter category");
-    if (ask === '') {
+    if (ask == '') {
       return;
     }
     this.category.title = ask;
@@ -62,9 +70,6 @@ export class CategoryWorkoutComponent implements OnInit {
     observable.subscribe(response => {
       console.log(response);
       this.categoryArray = response;
-
     });
-
   }
-
 }

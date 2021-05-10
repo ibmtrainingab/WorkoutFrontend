@@ -15,7 +15,6 @@ export class WorkoutFormComponent implements OnInit {
   @Input() workout: Workout = new Workout();
   @Output() sendWorkouParentt: EventEmitter<Workout> = new EventEmitter<Workout>();
   @Output() successHandler1: EventEmitter<Workout> = new EventEmitter<Workout>();
-  //@Output() workoutSuccess: EventEmitter<string> = new EventEmitter<string>();
   categories: any;
 
   constructor(private workoutService: WorkoutService) { }
@@ -23,13 +22,10 @@ export class WorkoutFormComponent implements OnInit {
   sendWorkout() {
     this.sendWorkouParentt.emit(this.workout);
   }
+
   sendWorkout1() {
     this.successHandler1.emit(this.workout);
   }
-
-  // successHandler(result: string) {
-  //   this.workoutSuccess.emit(result);
-  // }
 
   cancelUpdate() {
 
@@ -62,8 +58,7 @@ export class WorkoutFormComponent implements OnInit {
       }
     },
       error => {
-        if (error.status != 200)
-        {
+        if (error.status != 200) {
           Swal.fire(
             'Failed!',
             'Unable to fetch records from server'
@@ -71,15 +66,4 @@ export class WorkoutFormComponent implements OnInit {
         }
       });
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-
-  //   for (let propName in changes) {
-  //     let change = changes[propName];
-  //     this.parent = change.currentValue;
-  //     //this.bug.etaString = this.bug.eta.toString().split('T')[0];
-  //   }
-  // }
-
-
 }

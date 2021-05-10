@@ -16,6 +16,7 @@ export class EndWorkoutComponent implements OnInit {
   parent: any = { button: "Update" };
   workoutAny: any;
   dateString: any;
+  messageSuccess: boolean;
   constructor(private workoutService: WorkoutService) {
   }
   successHandler(result: string) {
@@ -23,9 +24,6 @@ export class EndWorkoutComponent implements OnInit {
   }
 
   putWorkout() {
-    if (!this.workoutService.validateWorkout(this.workout)) {
-      return;
-    }
     this.workout.status = "CLOSED";
     let newWorkout: Workout = new Workout();
     newWorkout.title = this.workout.title;
@@ -36,11 +34,6 @@ export class EndWorkoutComponent implements OnInit {
     let tempdate: any = this.workout.endDateTime + '.000+05:30'
     this.workout.endDateTime = tempdate;
 
-
-    function setDelay() {
-      setTimeout(function () {
-      }, 4000);
-    }
     const promise = this.workoutService.putWorkout(this.workout);
     promise.subscribe(response => {
       console.log(response);
@@ -52,8 +45,6 @@ export class EndWorkoutComponent implements OnInit {
       const promise1 = this.workoutService.postWorkout(newWorkout);
       promise1.subscribe(response => {
         console.log(response);
-        //alert("Workout created..");
-        //this.successHandler('1');
       },
         error => {
           console.log(error);
@@ -64,9 +55,9 @@ export class EndWorkoutComponent implements OnInit {
             )
           }
         });
-      setDelay();
-      this.successHandler('1');
-
+        setTimeout(() => {
+          this.successHandler('1');
+        }, 4000);
     },
       error => {
         console.log(error);
@@ -84,6 +75,7 @@ export class EndWorkoutComponent implements OnInit {
           )
         }
       })
+  
   }
 
   ngOnInit(): void {

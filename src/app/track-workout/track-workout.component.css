@@ -60,16 +60,14 @@ button{
   margin:5%;
 }
 table{
-  margin-top: 10%;
+  margin-top: 3%;
 }
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
 }
 
-.row.content {
-    height: 450px
-}
+
 
 .sidenav {
   padding-top: 20px;
@@ -196,6 +194,10 @@ visibility: visible;
 animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.row.content {
+  height: 100px
+}
+
 /* for animations */
 @-webkit-keyframes fadein {
 from {bottom: 0; opacity: 0;}
@@ -215,4 +217,11 @@ to {bottom: 0; opacity: 0;}
 @keyframes fadeout {
 from {bottom: 20px; opacity: 1;}
 to {bottom: 0; opacity: 0;}
+}
+tr:hover {
+  background-color: rgb(218, 231, 245);
+}
+
+tr:hover td {
+  background-color: transparent; /* or #000 */
 }

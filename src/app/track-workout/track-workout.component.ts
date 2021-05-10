@@ -4,6 +4,8 @@ import { Label, MultiDataSet } from 'ng2-charts';
 import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
+import * as $ from 'jquery'
+
 
 @Component({
   selector: 'app-track-workout',
@@ -61,7 +63,6 @@ export class TrackWorkoutComponent implements OnInit {
               this.showChart();
             }
           });
-
       }
     })
   }
@@ -74,28 +75,20 @@ export class TrackWorkoutComponent implements OnInit {
     promise.subscribe(response => {
       console.log(response);
       this.workoutArray = response;
-
+      this.barChartData[0].data.length = 0;
+      this.barChartLabels.length = 0;
+      setTimeout(() => {
+        console.log('hi');
+      }, 5000);
       for (let i = 0; i < this.workoutArray.length; i++) {
         if (this.workoutArray[i].endDateTime == null)
           continue;
-        // let tx:Date=this.workoutArray[i].startDateTime;
-        // let txx:Date=this.workoutArray[i].endDateTime;
-        // console.log((tx.getTime()))
         var time = new Date(this.workoutArray[i].startDateTime).getTime() - new Date(this.workoutArray[i].endDateTime).getTime();
-        //return diffInMs / 1000;
-        // var diff =(this.workoutArray[i].startDateTime.parse- this.workoutArray[i].endDateTime.parse) / 1000;
-        //diff /= 60;
-        console.log(Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt/60)))
+        console.log(Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt / 60)))
           ;
-        this.barChartData[0].data[i] = Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt/60));
+        this.barChartData[0].data[i] = Math.abs(Math.round((time / 1000) * this.workoutArray[i].caloriesBurnt / 60));
         this.barChartLabels[i] = this.workoutArray[i].title;
       }
-      // Swal.fire(
-      //   'Success!',
-      //   'Workout Satred Successfully!.',
-      //   'success'
-      // )
-      //this.successHandler('1');
     },
       error => {
         console.log(error);
@@ -109,18 +102,13 @@ export class TrackWorkoutComponent implements OnInit {
       });
   }
 
-
-
   constructor(private workoutService: WorkoutService) { }
 
   ngOnInit(): void {
     var today = new Date();
-
     let temp: Date = new Date((today.getFullYear()), today.getMonth(), today.getDate() - 6);
     let tempp: any = temp.toISOString().split("T")[0];
     this.trackDate = tempp;
-    //let temp:any;
-    // temp=this.trackDate.toLocaleDateString();
     this.showChart();
   }
 
