@@ -1,33 +1,26 @@
-.container{
+.container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1rem;
-    /* text-align: left; */
     background-color: #edffa9;
     border-radius: 10px;
-    border:2px solid black;
+    border: 2px solid black;
     box-shadow: green;
     margin-top: 20px;
     padding-top: 10px;
-    
 }
-.btn.btn-primary{
-    
+
+.btn.btn-primary {
     position: relative;
 }
-.form-control.form1{
+
+.form-control.form1 {
     box-shadow: cornflowerblue;
     position: relative;
 }
 
-.button-container{
-    /* margin-left: 150px; */
-    position:static;
+.button-container {
+    position: static;
     text-align: center;
 }
-
-/* @media (max-width: 892px)
-{    
-    .form-group .col-md-12{width:300px;} 
-} */

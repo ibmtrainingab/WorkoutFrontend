@@ -15,22 +15,21 @@ export class StartWorkoutComponent implements OnInit {
   parent: any = { button: "Update" };
   workoutAny: any;
   dateString: any;
+  messageSuccess: boolean;
   constructor(private workoutService: WorkoutService) {
-    
+
   }
   successHandler(result: string) {
     this.workoutSuccess.emit(result);
   }
 
-
   putWorkout() {
     if (!this.workoutService.validateWorkout(this.workout)) {
+      Swal.fire(
+        'Error!',
+        'Workout Validation Error ! '
+      )
       return;
-    }
-    function setDelay() {
-      setTimeout(function () {
-        
-      }, 4000);
     }
     let tempdate: any = this.workout.startDateTime + '.000+05:30'
     this.workout.startDateTime = tempdate;
@@ -42,8 +41,11 @@ export class StartWorkoutComponent implements OnInit {
         'Workout Started Successfully!.',
         'success'
       )
-      setDelay();
-      this.successHandler('1');
+      this.messageSuccess = true;
+      setTimeout(() => {
+        this.messageSuccess = false;
+        this.successHandler('1');
+      }, 4000);
     },
       error => {
         console.log(error);
@@ -64,7 +66,7 @@ export class StartWorkoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+
   }
 
 }

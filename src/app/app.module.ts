@@ -20,6 +20,7 @@ import { ChartsModule } from 'ng2-charts';
 import * as Chart from 'chart.js';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { CategoryWorkoutComponent } from './category-workout/category-workout.co
     { path: 'track', component: TrackWorkoutComponent },
     { path: '', redirectTo: '/viewAll', pathMatch: 'full' }
   ], { useHash: true }),
-    BrowserModule, HttpClientModule, FormsModule, ChartsModule,Ng2SearchPipeModule
+    BrowserModule, HttpClientModule, FormsModule, ChartsModule, Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
