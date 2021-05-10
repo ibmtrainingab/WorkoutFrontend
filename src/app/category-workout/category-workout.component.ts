@@ -13,7 +13,6 @@ export class CategoryWorkoutComponent implements OnInit {
   category: Category = new Category();
   categoryArray: any;
   searchedKeyword: string;
-
   constructor(private categoryService: CategoryService) { }
   saveCategory() {
     const observable = this.categoryService.addCategory(this.category);
@@ -56,16 +55,16 @@ export class CategoryWorkoutComponent implements OnInit {
       error => {
         Swal.fire("Error Occured - " + error.error);
       });
-
   }
-
 
   ngOnInit(): void {
     const observable = this.categoryService.getAllCategories();
     observable.subscribe(response => {
       console.log(response);
       this.categoryArray = response;
+
     });
+
   }
 
 }
