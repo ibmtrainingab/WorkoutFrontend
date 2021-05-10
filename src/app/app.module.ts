@@ -45,6 +45,7 @@ import * as Chart from 'chart.js';
     { path: 'update', component: UpdateWorkoutComponent },
     { path: 'viewAll', component: ViewComponent },
     { path: 'track', component: TrackWorkoutComponent },
+    {path:'category',component:CategoryWorkoutComponent},
     { path: '', redirectTo: '/viewAll', pathMatch: 'full' }
   ], { useHash: true }),
     BrowserModule, HttpClientModule, FormsModule, Ng2SearchPipeModule, ChartsModule,
