@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
   <div class="d-flex justify-content-left">
-    <input type="text" class="form-control" id="inputCalories" required [(ngModel)]=workout.caloriesBurnt>
+    <input type="number" class="form-control" id="inputCalories" required [(ngModel)]=workout.caloriesBurnt>
     <label class="form-control-placeholder" for="inputCalories">Calories</label>
     <button (click)='caloriesPlusMinus(1)' type="button" class="btn btn-link" style="padding: 1%;margin: 0px;"><i
         class='fas fa-plus'></i>
