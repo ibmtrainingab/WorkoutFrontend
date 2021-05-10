@@ -38,8 +38,8 @@ export class StartWorkoutComponent implements OnInit {
     promise.subscribe(response => {
       console.log(response);
       Swal.fire(
-        'Satred!',
-        'Workout Satred Successfully!.',
+        'Started!',
+        'Workout Started Successfully!.',
         'success'
       )
       setDelay();
@@ -55,8 +55,8 @@ export class StartWorkoutComponent implements OnInit {
         }
         else {
           Swal.fire(
-            'Satred!',
-            'Workout Satred Successfully!.',
+            'Started!',
+            'Workout Started Successfully!.',
             'success'
           )
         }
