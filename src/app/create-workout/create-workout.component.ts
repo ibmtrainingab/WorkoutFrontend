@@ -17,7 +17,12 @@ export class CreateWorkoutComponent implements OnInit {
   constructor(private workoutService: WorkoutService) { }
 
   postWorkout(workoutTemp: Workout) {
+    workoutTemp.comment=null;
     if (!this.workoutService.validateWorkout(workoutTemp)) {
+      Swal.fire(
+        'Failed!',
+        'Error! Give input as per instruction'
+      );
       return;
     }
     const promise = this.workoutService.postWorkout(this.workout);

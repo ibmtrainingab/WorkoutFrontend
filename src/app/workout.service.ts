@@ -27,7 +27,10 @@ export class WorkoutService {
   }
 
   validateWorkout(workoutTemp: Workout) {
-    return 1;
+    if (workoutTemp.note.length < 5 || workoutTemp.note.length > 100 || workoutTemp.title.length < 3 || workoutTemp.title.length > 500)
+      return 0;
+    else
+      return 1;
   }
   getWorkouts(id: string) {
     return this.http.get(this.URL + '');
