@@ -20,7 +20,6 @@ import { ChartsModule } from 'ng2-charts';
 import * as Chart from 'chart.js';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CategoryWorkoutComponent } from './category-workout/category-workout.component';
-import * as $ from 'jquery';
 
 @NgModule({
   declarations: [

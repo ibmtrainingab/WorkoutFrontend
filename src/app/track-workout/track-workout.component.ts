@@ -4,7 +4,6 @@ import { Label, MultiDataSet } from 'ng2-charts';
 import Swal from 'sweetalert2';
 import { Workout } from '../Workout';
 import { WorkoutService } from '../workout.service';
-import * as $ from 'jquery'
 
 
 @Component({
